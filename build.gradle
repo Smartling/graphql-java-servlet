@@ -70,6 +70,7 @@ apply plugin: 'osgi'
 apply plugin: 'java-library-distribution'
 apply plugin: 'biz.aQute.bnd.builder'
 apply plugin: 'com.jfrog.bintray'
+// SM edit: don't need these, but leaving in to make merging down from origin (hopefully) easier
 //apply plugin: 'maven-publish'
 //apply plugin: 'idea'
 
@@ -90,6 +91,7 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+// SM edit: don't need these, but leaving in to make merging down from origin (hopefully) easier
 /*
 publishing {
     publications {
@@ -178,6 +180,8 @@ idea {
     }
 }
 */
+
+// Smartling-specific edits
 version = getVersion()
 
 def getVersion() {
