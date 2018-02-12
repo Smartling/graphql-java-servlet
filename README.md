@@ -6,6 +6,13 @@
 
 This module implements a GraphQL Java Servlet. It also supports Relay.js, Apollo and OSGi out of the box.
 
+# Smartling Version
+
+```
+compile 'com.smartling.graphql-java:graphql-java-servlet:4.7.1'
+```
+
+
 # Downloading
 
 You can download releases from maven central:

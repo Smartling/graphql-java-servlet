@@ -25,7 +25,7 @@ repositories {
 }
 
 configurations.all {
-    exclude group:"org.projectlombok", module: "lombok"
+    exclude group: "org.projectlombok", module: "lombok"
 }
 
 dependencies {
@@ -70,8 +70,9 @@ apply plugin: 'osgi'
 apply plugin: 'java-library-distribution'
 apply plugin: 'biz.aQute.bnd.builder'
 apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-apply plugin: 'idea'
+// SM edit: don't need these, but leaving in to make merging down from origin (hopefully) easier
+//apply plugin: 'maven-publish'
+//apply plugin: 'idea'
 
 jar {
     manifest {
@@ -90,6 +91,8 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+// SM edit: don't need these, but leaving in to make merging down from origin (hopefully) easier
+/*
 publishing {
     publications {
         maven(MavenPublication) {
@@ -175,4 +178,23 @@ idea {
         languageLevel = '1.8'
         vcs = 'Git'
     }
+}
+*/
+
+// Smartling-specific edits
+version = getVersion()
+
+def getVersion() {
+    def semanticVersion = project.version
+
+    return "${semanticVersion}${versionQualifier()}-SNAPSHOT"
+}
+
+static def versionQualifier() {
+    def branch_name = System.env.BRANCH_NAME
+
+    if (branch_name == null || branch_name == 'master')
+        return ""
+    else
+        return '-' + branch_name
 }
