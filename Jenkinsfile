@@ -28,7 +28,7 @@ node {
     } catch (org.jenkinsci.plugins.workflow.steps.FlowInterruptedException e) {
         throw e
     } catch (Exception e) {
-        # slackSend channel: '#data-team-alert', color: 'bad', message: "<${env.BUILD_URL}|${env.JOB_NAME} ${env.BUILD_NUMBER}> is failed!"
+         slackSend channel: '#data-team-alert', color: 'bad', message: "<${env.BUILD_URL}|${env.JOB_NAME} ${env.BUILD_NUMBER}> is failed!"
 
         throw e
     }
